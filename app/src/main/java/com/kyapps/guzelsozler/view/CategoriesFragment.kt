@@ -49,7 +49,7 @@ class CategoriesFragment : Fragment() {
         //fragmentBinding = binding
 
         viewModel = ViewModelProvider(this)[CategoriesViewModel::class.java]
-        viewModel.refreshFromAPI()
+        viewModel.refreshCategoriesDataFromAPI()
 
         view.findViewById<RecyclerView>(R.id.categoriesRV).layoutManager = LinearLayoutManager(context)
         view.findViewById<RecyclerView>(R.id.categoriesRV).adapter = categoriesAdapter
@@ -57,7 +57,7 @@ class CategoriesFragment : Fragment() {
         view.findViewById<SwipeRefreshLayout>(R.id.swipeRefreshLayout).setOnRefreshListener {
             view.findViewById<RecyclerView>(R.id.categoriesRV).visibility = View.GONE
             view.findViewById<TextView>(R.id.categoriesError).visibility = View.GONE
-            viewModel.refreshData()
+            viewModel.refreshCategoriesData()
             view.findViewById<ProgressBar>(R.id.categoriesLoading).visibility = View.GONE
             view.findViewById<SwipeRefreshLayout>(R.id.swipeRefreshLayout).isRefreshing = false
         }

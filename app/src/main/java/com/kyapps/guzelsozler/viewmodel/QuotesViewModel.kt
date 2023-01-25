@@ -24,22 +24,20 @@ class QuotesViewModel(application: Application): BaseViewModel(application) {
     val quotesError = MutableLiveData<Boolean>()
     val quotesLoading = MutableLiveData<Boolean>()
 
-
-    fun refreshData(id : String){
+    fun refreshQuotesData(id : String){
         val updateTime = customPreferences.getTime()
         if (updateTime != null && updateTime != 0L && System.nanoTime() - updateTime < refreshTime){
-            getDataFromSQLite(id) //10dk dan az ise sql den al
+            getQuotesDataFromSQLite(id) //10dk dan az ise sql den al
         } else{
-            getDataFromAPI(id) //10dkdan fazla ise apiden al.
-
+            getQuotesDataFromAPI(id) //10dkdan fazla ise apiden al.
         }
     }
 
-    fun refreshFromAPI(id : String){
-        getDataFromAPI(id)
+    fun refreshQuotesFromAPI(id : String){
+        getQuotesDataFromAPI(id)
     }
 
-    private fun getDataFromSQLite(id : String){
+    private fun getQuotesDataFromSQLite(id : String){
         quotesLoading.value = true
         launch {
             val quotes = GuzelSozlerDatabase(getApplication()).GuzelSozlerDao().getQuotes(id)
@@ -48,7 +46,7 @@ class QuotesViewModel(application: Application): BaseViewModel(application) {
         }
     }
 
-    private fun getDataFromAPI(id : String) {
+    private fun getQuotesDataFromAPI(id : String) {
         quotesLoading.value = true
         disposable.add(
             guzelSozlerAPIService.getQuoteData(id)
@@ -56,7 +54,7 @@ class QuotesViewModel(application: Application): BaseViewModel(application) {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object : DisposableSingleObserver<List<Quotes>>(){
                     override fun onSuccess(t: List<Quotes>) {
-                        storeInSQLite(t)
+                        storeQuotesInSQLite(t)
                         Toast.makeText(getApplication(), "Quotes from API", Toast.LENGTH_LONG).show()
                     }
 
@@ -64,7 +62,6 @@ class QuotesViewModel(application: Application): BaseViewModel(application) {
                         quotesLoading.value = false
                         quotesError.value = true
                     }
-
                 })
         )
     }
@@ -75,7 +72,7 @@ class QuotesViewModel(application: Application): BaseViewModel(application) {
         quotesLoading.value = false
     }
 
-    private fun storeInSQLite(list: List<Quotes>){
+    private fun storeQuotesInSQLite(list: List<Quotes>){
         launch {
             val dao = GuzelSozlerDatabase(getApplication()).GuzelSozlerDao()
             dao.deleteAllQuotes()
@@ -85,7 +82,6 @@ class QuotesViewModel(application: Application): BaseViewModel(application) {
                 list[i].quoteId = listLong[i].toInt()
                 i += 1
             }
-
             showQuotes(list)
         }
         customPreferences.saveTime(System.nanoTime())

@@ -54,14 +54,14 @@ class QuotesFragment : Fragment() {
         }
 
         viewModel = ViewModelProvider(this)[QuotesViewModel::class.java]
-        viewModel.refreshFromAPI(sentCategoryId.toString())
+        viewModel.refreshQuotesFromAPI(sentCategoryId.toString())
 
         view.findViewById<RecyclerView>(R.id.quotesRV).layoutManager = LinearLayoutManager(context)
         view.findViewById<RecyclerView>(R.id.quotesRV).adapter = quotesAdapter
         view.findViewById<SwipeRefreshLayout>(R.id.swipeQuotes).setOnRefreshListener {
             view.findViewById<RecyclerView>(R.id.quotesRV).visibility = View.GONE
             view.findViewById<TextView>(R.id.quotesError).visibility = View.GONE
-            viewModel.refreshData(sentCategoryId.toString())
+            viewModel.refreshQuotesData(sentCategoryId.toString())
             view.findViewById<ProgressBar>(R.id.quotesLoading).visibility = View.GONE
             view.findViewById<SwipeRefreshLayout>(R.id.swipeQuotes).isRefreshing = false
         }

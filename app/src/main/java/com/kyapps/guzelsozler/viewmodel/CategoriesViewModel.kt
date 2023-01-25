@@ -27,21 +27,21 @@ class CategoriesViewModel(application: Application) : BaseViewModel(application)
     val categoriesError = MutableLiveData<Boolean>()
     val categoriesLoading = MutableLiveData<Boolean>()
 
-    fun refreshData(){
+    fun refreshCategoriesData(){
         val updateTime = customPreferences.getTime()
         if (updateTime != null && updateTime != 0L && System.nanoTime() - updateTime < refreshTime){
-            getDataFromSQLite() //10dk dan az ise sql den al
+            getCategoriesDataFromSQLite() //10dk dan az ise sql den al
         } else{
-            getDataFromAPI() //10dkdan fazla ise apiden al.
+            getCategoriesDataFromAPI() //10dkdan fazla ise apiden al.
 
         }
     }
 
-    fun refreshFromAPI(){
-        getDataFromAPI()
+    fun refreshCategoriesDataFromAPI(){
+        getCategoriesDataFromAPI()
     }
 
-    private fun getDataFromSQLite(){
+    private fun getCategoriesDataFromSQLite(){
         categoriesLoading.value = true
         launch {
             val categories = GuzelSozlerDatabase(getApplication()).GuzelSozlerDao().getCategories()
@@ -50,7 +50,7 @@ class CategoriesViewModel(application: Application) : BaseViewModel(application)
         }
     }
 
-    private fun getDataFromAPI() {
+    private fun getCategoriesDataFromAPI() {
         categoriesLoading.value = true
         disposable.add(
             guzelSozlerAPIService.getData()
@@ -58,7 +58,7 @@ class CategoriesViewModel(application: Application) : BaseViewModel(application)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object : DisposableSingleObserver<List<Categories>>(){
                     override fun onSuccess(t: List<Categories>) {
-                        storeInSQLite(t)
+                        storeCategoriesInSQLite(t)
                         Toast.makeText(getApplication(), "Categories from API", Toast.LENGTH_LONG).show()
                     }
 
@@ -77,7 +77,7 @@ class CategoriesViewModel(application: Application) : BaseViewModel(application)
         categoriesLoading.value = false
     }
 
-    private fun storeInSQLite(list: List<Categories>){
+    private fun storeCategoriesInSQLite(list: List<Categories>){
         launch {
             val dao = GuzelSozlerDatabase(getApplication()).GuzelSozlerDao()
             dao.deleteAllCategories()
