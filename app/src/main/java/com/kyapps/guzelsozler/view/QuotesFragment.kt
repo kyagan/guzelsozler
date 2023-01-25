@@ -6,8 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.ProgressBar
 import android.widget.TextView
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -65,6 +67,11 @@ class QuotesFragment : Fragment() {
         }
 
         observeLiveData()
+
+        //img favs button clicked
+        view.findViewById<ImageButton>(R.id.imgFav).setOnClickListener{
+            Toast.makeText(context,"Favorites button clicked!", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun observeLiveData() {

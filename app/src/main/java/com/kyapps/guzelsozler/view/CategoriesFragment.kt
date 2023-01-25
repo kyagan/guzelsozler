@@ -68,6 +68,11 @@ class CategoriesFragment : Fragment() {
             Toast.makeText(context,"Settings button clicked!",Toast.LENGTH_SHORT).show()
         }
 
+        //img favs button clicked
+        view.findViewById<ImageButton>(R.id.imgFav).setOnClickListener{
+            Toast.makeText(context,"Favorites button clicked!",Toast.LENGTH_SHORT).show()
+        }
+
 
     }
 
