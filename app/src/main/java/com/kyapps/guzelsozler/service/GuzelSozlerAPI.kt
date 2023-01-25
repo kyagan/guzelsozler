@@ -15,4 +15,7 @@ interface GuzelSozlerAPI {
     @GET("quotes.php")
     fun getQuotes():Single<List<Quotes>>
 
+    @GET("quote.php")
+    fun getQuotesById(@Query("cat_id") cat_id: String):Single<List<Quotes>>
+
 }

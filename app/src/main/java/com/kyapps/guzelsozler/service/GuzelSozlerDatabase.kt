@@ -8,7 +8,7 @@ import com.kyapps.guzelsozler.model.Categories
 import com.kyapps.guzelsozler.model.Quotes
 
 
-@Database(entities = arrayOf(Categories::class, Quotes::class), version = 5)
+@Database(entities = arrayOf(Categories::class, Quotes::class), version = 6)
 abstract class GuzelSozlerDatabase : RoomDatabase(){
 
     abstract fun GuzelSozlerDao() : GuzelSozlerDao

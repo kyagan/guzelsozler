@@ -20,25 +20,23 @@ class QuotesViewModel(application: Application): BaseViewModel(application) {
     private val customPreferences = CustomSharedPreferences(getApplication())
     private var refreshTime = 10 * 60 * 1000 * 1000 * 1000L
 
-    val quotesLiveData = MutableLiveData<Quotes>()
-
     val quotes = MutableLiveData<List<Quotes>>()
     val quotesError = MutableLiveData<Boolean>()
     val quotesLoading = MutableLiveData<Boolean>()
 
 
-    fun refreshData(){
+    fun refreshData(id : String){
         val updateTime = customPreferences.getTime()
         if (updateTime != null && updateTime != 0L && System.nanoTime() - updateTime < refreshTime){
-            getDataFromSQLite() //10dk dan az ise sql den al
+            getDataFromAPI(id) //10dk dan az ise sql den al
         } else{
-            getDataFromAPI() //10dkdan fazla ise apiden al.
+            getDataFromAPI(id) //10dkdan fazla ise apiden al.
 
         }
     }
 
-    fun refreshFromAPI(){
-        getDataFromAPI()
+    fun refreshFromAPI(id : String){
+        getDataFromAPI(id)
     }
 
     private fun getDataFromSQLite(){
@@ -50,10 +48,10 @@ class QuotesViewModel(application: Application): BaseViewModel(application) {
         }
     }
 
-    private fun getDataFromAPI() {
+    private fun getDataFromAPI(id : String) {
         quotesLoading.value = true
         disposable.add(
-            guzelSozlerAPIService.getQuotes()
+            guzelSozlerAPIService.getQuoteData(id)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object : DisposableSingleObserver<List<Quotes>>(){
