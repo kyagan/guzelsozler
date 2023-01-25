@@ -21,10 +21,6 @@ class GuzelSozlerAPIService {
         return api.getCategories()
     }
 
-    fun getQuotes() : Single<List<Quotes>>{
-        return api.getQuotes()
-    }
-
     fun getQuoteData(cat_id : String) : Single<List<Quotes>>{
         return api.getQuotesById(cat_id)
     }

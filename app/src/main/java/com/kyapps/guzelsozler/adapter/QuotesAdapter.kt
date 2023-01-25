@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
 import androidx.core.content.contentValuesOf
@@ -33,6 +34,8 @@ class QuotesAdapter(val quotesList : ArrayList<Quotes>): RecyclerView.Adapter<Qu
     override fun onBindViewHolder(holder: QuotesViewHolder, position: Int) {
         holder.view.quote = quotesList[position]
         holder.view.listener = this
+
+
     }
 
     fun updateQuotesList(newQuotesList: List<Quotes>){

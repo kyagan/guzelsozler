@@ -49,7 +49,8 @@ class CategoriesAdapter(private val categoriesList: ArrayList<Categories>):
 
     override fun onCategoriesClicked(v: View) {
         val sentCategoryId = v.findViewById<TextView>(R.id.item_category_id).text.toString().toInt()
-        val action = CategoriesFragmentDirections.actionCategoriesFragmentToQuotesFragment(sentCategoryId)
+        val sentCategoryName = v.findViewById<TextView>(R.id.item_category_name).text.toString()
+        val action = CategoriesFragmentDirections.actionCategoriesFragmentToQuotesFragment(sentCategoryId,sentCategoryName)
         Navigation.findNavController(v).navigate(action)
     }
 

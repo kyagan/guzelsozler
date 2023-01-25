@@ -25,6 +25,7 @@ class QuotesFragment : Fragment() {
     private lateinit var viewModel : QuotesViewModel
     private val quotesAdapter = QuotesAdapter(arrayListOf())
     private var sentCategoryId = 0
+    private var sentCategoryName = "Kategori Adı"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,7 +47,8 @@ class QuotesFragment : Fragment() {
 
         arguments?.let{
             sentCategoryId = QuotesFragmentArgs.fromBundle(it).sentCategoryId
-            fragmentBinding.categoryTitle.text = sentCategoryId.toString()
+            sentCategoryName = QuotesFragmentArgs.fromBundle(it).sentCategoryName
+            fragmentBinding.categoryTitle.text = sentCategoryName
         }
 
         viewModel = ViewModelProvider(this)[QuotesViewModel::class.java]

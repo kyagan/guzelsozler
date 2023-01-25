@@ -18,14 +18,8 @@ interface GuzelSozlerDao {
     @Query("SELECT * FROM categories")
     suspend fun getCategories(): List<Categories>
 
-    @Query("SELECT * FROM quotes")
-    suspend fun getQuotes(): List<Quotes>
-
-    //@Query("SELECT * FROM quotes")
-    //suspend fun getQuotesByCatId(): List<Quotes>
-
-    //@Query("SELECT * FROM Categories WHERE categoryId = : categoryId")
-    //suspend fun getCategory(categoryId : Int): Categories
+    @Query("SELECT * FROM quotes WHERE cat_id = :cat_id")
+    suspend fun getQuotes(cat_id : String): List<Quotes>
 
     @Query("DELETE FROM categories")
     suspend fun deleteAllCategories()

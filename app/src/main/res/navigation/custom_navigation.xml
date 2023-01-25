@@ -23,12 +23,17 @@
         android:label="fragment_quotes"
         tools:layout="@layout/fragment_quotes">
 
-    <argument
-        android:name="sentCategoryId"
-        app:argType="integer"
-        android:defaultValue="0" />
+        <argument
+            android:name="sentCategoryId"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="sentCategoryName"
+            app:argType="string"
+            android:defaultValue="Kategori Adı" />
         <action
             android:id="@+id/action_quotesFragment_to_categoriesFragment"
             app:destination="@id/categoriesFragment" />
+
     </fragment>
 </navigation>

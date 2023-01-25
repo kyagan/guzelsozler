@@ -28,7 +28,7 @@ class QuotesViewModel(application: Application): BaseViewModel(application) {
     fun refreshData(id : String){
         val updateTime = customPreferences.getTime()
         if (updateTime != null && updateTime != 0L && System.nanoTime() - updateTime < refreshTime){
-            getDataFromAPI(id) //10dk dan az ise sql den al
+            getDataFromSQLite(id) //10dk dan az ise sql den al
         } else{
             getDataFromAPI(id) //10dkdan fazla ise apiden al.
 
@@ -39,10 +39,10 @@ class QuotesViewModel(application: Application): BaseViewModel(application) {
         getDataFromAPI(id)
     }
 
-    private fun getDataFromSQLite(){
+    private fun getDataFromSQLite(id : String){
         quotesLoading.value = true
         launch {
-            val quotes = GuzelSozlerDatabase(getApplication()).GuzelSozlerDao().getQuotes()
+            val quotes = GuzelSozlerDatabase(getApplication()).GuzelSozlerDao().getQuotes(id)
             showQuotes(quotes)
             Toast.makeText(getApplication(), "Quotes from SQLite", Toast.LENGTH_LONG).show()
         }
