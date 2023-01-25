@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="category"
+            type="com.kyapps.guzelsozler.model.Categories" />
+        <variable
+            name="listener"
+            type="com.kyapps.guzelsozler.adapter.CategoriesClickListener" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/bg_category_item"
+        android:orientation="horizontal"
+        android:onClick="@{listener::onCategoriesClicked}">
+
+        <TextView
+            android:id="@+id/item_category_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:text="@{String.valueOf(category.categoryId)}">
+        </TextView>
+
+        <ImageView
+            android:id="@+id/item_category_icon"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:padding="15dp"
+            android:downloadUrl="@{category.categoryIcon}" />
+
+        <TextView
+            android:id="@+id/item_category_name"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="@{category.categoryName}"
+            android:textSize="30sp" />
+
+
+    </LinearLayout>
+</layout>

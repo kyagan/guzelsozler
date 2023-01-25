@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/custom_navigation"
+    app:startDestination="@id/categoriesFragment">
+
+
+
+    <fragment
+        android:id="@+id/categoriesFragment"
+        android:name="com.kyapps.guzelsozler.view.CategoriesFragment"
+        android:label="fragment_categories"
+        tools:layout="@layout/fragment_categories" >
+
+        <action
+            android:id="@+id/action_categoriesFragment_to_quotesFragment"
+            app:destination="@id/quotesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/quotesFragment"
+        android:name="com.kyapps.guzelsozler.view.QuotesFragment"
+        android:label="fragment_quotes"
+        tools:layout="@layout/fragment_quotes">
+
+    <argument
+        android:name="sentCategoryId"
+        app:argType="integer"
+        android:defaultValue="0" />
+        <action
+            android:id="@+id/action_quotesFragment_to_categoriesFragment"
+            app:destination="@id/categoriesFragment" />
+    </fragment>
+</navigation>
