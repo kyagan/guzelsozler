@@ -70,7 +70,7 @@ class QuotesFragment : Fragment() {
 
         //img favs button clicked
         view.findViewById<ImageButton>(R.id.imgFav).setOnClickListener{
-            Toast.makeText(context,"Favorites button clicked!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context,"Favourites button clicked!", Toast.LENGTH_SHORT).show()
         }
     }
 
