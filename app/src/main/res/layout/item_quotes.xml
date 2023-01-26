@@ -95,10 +95,10 @@
                 android:gravity="center">
 
                 <ImageButton
-                    android:id="@+id/imgFav"
+                    android:id="@+id/imgFavorite"
                     android:layout_width="28dp"
                     android:layout_height="28dp"
-                    android:background="@drawable/favourite" />
+                    android:background="@drawable/favorite" />
 
             </LinearLayout>
 
