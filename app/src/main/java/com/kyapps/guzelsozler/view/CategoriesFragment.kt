@@ -44,12 +44,9 @@ class CategoriesFragment : Fragment() {
     @SuppressLint("CutPasteId")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //val binding = FragmentCategoriesBinding.bind(view)
-
-        //fragmentBinding = binding
 
         viewModel = ViewModelProvider(this)[CategoriesViewModel::class.java]
-        viewModel.refreshCategoriesDataFromAPI()
+        viewModel.refreshCategoriesData()
 
         view.findViewById<RecyclerView>(R.id.categoriesRV).layoutManager = LinearLayoutManager(context)
         view.findViewById<RecyclerView>(R.id.categoriesRV).adapter = categoriesAdapter
@@ -69,8 +66,8 @@ class CategoriesFragment : Fragment() {
         }
 
         //img favs button clicked
-        view.findViewById<ImageButton>(R.id.imgFav).setOnClickListener{
-            Toast.makeText(context,"Favorites button clicked!",Toast.LENGTH_SHORT).show()
+        view.findViewById<ImageButton>(R.id.imgInfo).setOnClickListener{
+            Toast.makeText(context,"Info button clicked!",Toast.LENGTH_SHORT).show()
         }
 
 

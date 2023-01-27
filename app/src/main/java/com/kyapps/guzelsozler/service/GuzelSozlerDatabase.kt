@@ -10,7 +10,7 @@ import com.kyapps.guzelsozler.model.Quotes
 
 @Database(
     entities = arrayOf(Categories::class, Quotes::class),
-    version = 7
+    version = 1
 )
 abstract class GuzelSozlerDatabase : RoomDatabase(){
 

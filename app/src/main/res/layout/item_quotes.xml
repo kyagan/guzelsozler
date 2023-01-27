@@ -22,7 +22,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_quotes_top"
+            android:background="@drawable/bg_quotes"
             android:onClick="@{listener::onQuotesClicked}"
             android:orientation="vertical">
 
@@ -60,7 +60,9 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:text="@{quote.quoteText}"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    android:fontFamily="@font/averta_regular"
+                    android:textColor="@color/quote_text"/>
             </LinearLayout>
 
             <LinearLayout
@@ -77,60 +79,6 @@
                     android:src="@drawable/quote_bottom" />
             </LinearLayout>
 
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_quotes_bottom"
-            android:orientation="horizontal"
-            android:weightSum="3">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="8dp"
-                android:layout_weight="1"
-                android:gravity="center">
-
-                <ImageButton
-                    android:id="@+id/imgFavorite"
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
-                    android:background="@drawable/favorite" />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center">
-
-                <ImageButton
-                    android:id="@+id/imgCopy"
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
-                    android:layout_margin="8dp"
-                    android:background="@drawable/copy" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center">
-
-                <ImageButton
-                    android:id="@+id/imgShare"
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
-                    android:layout_margin="8dp"
-                    android:background="@drawable/share" />
-
-            </LinearLayout>
 
         </LinearLayout>
 

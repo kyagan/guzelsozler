@@ -42,7 +42,8 @@
             android:layout_weight="1"
             android:gravity="center_vertical"
             android:text="@{category.categoryName}"
-            android:textSize="30sp" />
+            android:textSize="30sp"
+            android:fontFamily="@font/averta_bold"/>
 
 
     </LinearLayout>

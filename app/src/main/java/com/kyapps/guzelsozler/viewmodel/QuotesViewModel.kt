@@ -27,9 +27,9 @@ class QuotesViewModel(application: Application): BaseViewModel(application) {
     fun refreshQuotesData(id : String){
         val updateTime = customPreferences.getTime()
         if (updateTime != null && updateTime != 0L && System.nanoTime() - updateTime < refreshTime){
-            getQuotesDataFromSQLite(id) //10dk dan az ise sql den al
+            getQuotesDataFromSQLite(id)
         } else{
-            getQuotesDataFromAPI(id) //10dkdan fazla ise apiden al.
+            getQuotesDataFromAPI(id)
         }
     }
 

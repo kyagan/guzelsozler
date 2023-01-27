@@ -19,8 +19,5 @@ data class Quotes(
     var quoteName: String?,
     @ColumnInfo("cat_id")
     @SerializedName("cat_id")
-    var quoteCatId: Int?,
-    @ColumnInfo("is_favorite")
-    @SerializedName("is_favorite")
-    var quoteIsFavorite: Boolean?
+    var quoteCatId: Int?
 )
