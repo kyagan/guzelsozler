@@ -14,9 +14,6 @@ data class Quotes(
     @ColumnInfo("quote")
     @SerializedName("quote")
     var quoteText : String?,
-    @ColumnInfo("name")
-    @SerializedName("name")
-    var quoteName: String?,
     @ColumnInfo("cat_id")
     @SerializedName("cat_id")
     var quoteCatId: Int?
