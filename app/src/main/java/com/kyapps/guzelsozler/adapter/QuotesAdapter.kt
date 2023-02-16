@@ -1,10 +1,15 @@
 package com.kyapps.guzelsozler.adapter
 
+import android.content.ClipData
+import android.content.ClipboardManager
 import android.content.Context
+import android.content.Context.CLIPBOARD_SERVICE
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.kyapps.guzelsozler.R
@@ -41,12 +46,9 @@ class QuotesAdapter(val quotesList : ArrayList<Quotes>): RecyclerView.Adapter<Qu
     }
 
     override fun onQuotesClicked(v: View) {
-        /*holder.view.findViewById<ImageButton>(R.id.imgFav).setOnClickListener{
-            v.findViewById<ImageButton>(R.id.imgFav).background
-            Toast.makeText(holder.view.context,"dd",Toast.LENGTH_SHORT).show()
-        }*/
-
-        Toast.makeText(v.context,"Quote clicked no position",Toast.LENGTH_SHORT).show()
-
+        val clipboard = v.context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+        val clip: ClipData = ClipData.newPlainText("quote", v.findViewById<TextView>(R.id.item_quotetext).text)
+        clipboard.setPrimaryClip(clip)
+        Toast.makeText(v.context,v.findViewById<TextView>(R.id.item_quotetext).text,Toast.LENGTH_SHORT).show()
     }
 }

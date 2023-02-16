@@ -42,7 +42,7 @@ class QuotesViewModel(application: Application): BaseViewModel(application) {
         launch {
             val quotes = GuzelSozlerDatabase(getApplication()).GuzelSozlerDao().getQuotes(id)
             showQuotes(quotes)
-            Toast.makeText(getApplication(), "Quotes from SQLite", Toast.LENGTH_LONG).show()
+            //Toast.makeText(getApplication(), "Quotes from SQLite", Toast.LENGTH_LONG).show()
         }
     }
 
@@ -55,7 +55,7 @@ class QuotesViewModel(application: Application): BaseViewModel(application) {
                 .subscribeWith(object : DisposableSingleObserver<List<Quotes>>(){
                     override fun onSuccess(t: List<Quotes>) {
                         storeQuotesInSQLite(t)
-                        Toast.makeText(getApplication(), "Quotes from API", Toast.LENGTH_LONG).show()
+                        //Toast.makeText(getApplication(), "Quotes from API", Toast.LENGTH_LONG).show()
                     }
 
                     override fun onError(e: Throwable) {

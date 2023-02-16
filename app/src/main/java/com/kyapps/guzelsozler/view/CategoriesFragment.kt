@@ -2,6 +2,7 @@ package com.kyapps.guzelsozler.view
 
 import android.annotation.SuppressLint
 import android.app.Service
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -62,12 +63,16 @@ class CategoriesFragment : Fragment() {
 
         //image menu button clicked
         view.findViewById<ImageButton>(R.id.imgSettings).setOnClickListener{
-            Toast.makeText(context,"Settings button clicked!",Toast.LENGTH_SHORT).show()
+            Toast.makeText(context,getText(R.string.settings),Toast.LENGTH_SHORT).show()
         }
 
         //img favs button clicked
-        view.findViewById<ImageButton>(R.id.imgInfo).setOnClickListener{
-            Toast.makeText(context,"Info button clicked!",Toast.LENGTH_SHORT).show()
+        view.findViewById<ImageButton>(R.id.imgShare).setOnClickListener{
+            val intent= Intent()
+            intent.action=Intent.ACTION_SEND
+            intent.putExtra(Intent.EXTRA_TEXT,"Güzel Sözler uygulamasını sen de indir! https://play.google.com/store/apps/details?id=com.kyapps.guzelsozler:")
+            intent.type="text/plain"
+            startActivity(Intent.createChooser(intent,"Paylaş:"))
         }
 
 

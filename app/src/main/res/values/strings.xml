@@ -1,6 +1,4 @@
 <resources>
-    <string name="app_name">GuzelSozler</string>
-    <string name="app_title">Güzel Sözler</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
+    <string name="app_name">Güzel Sözler</string>
+    <string name="settings">Ayarlar hazır değil.</string>
 </resources>

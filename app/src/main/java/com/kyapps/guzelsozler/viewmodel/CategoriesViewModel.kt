@@ -46,7 +46,7 @@ class CategoriesViewModel(application: Application) : BaseViewModel(application)
         launch {
             val categories = GuzelSozlerDatabase(getApplication()).GuzelSozlerDao().getCategories()
             showCategories(categories)
-            Toast.makeText(getApplication(), "Categories from SQLite", Toast.LENGTH_LONG).show()
+            //Toast.makeText(getApplication(), "Categories from SQLite", Toast.LENGTH_LONG).show()
         }
     }
 
@@ -59,7 +59,7 @@ class CategoriesViewModel(application: Application) : BaseViewModel(application)
                 .subscribeWith(object : DisposableSingleObserver<List<Categories>>(){
                     override fun onSuccess(t: List<Categories>) {
                         storeCategoriesInSQLite(t)
-                        Toast.makeText(getApplication(), "Categories from API", Toast.LENGTH_LONG).show()
+                        //Toast.makeText(getApplication(), "Categories from API", Toast.LENGTH_LONG).show()
                     }
 
                     override fun onError(e: Throwable) {

@@ -32,22 +32,22 @@
                 android:layout_height="match_parent"
                 android:fontFamily="@font/averta_bold"
                 android:gravity="center"
-                android:text="@string/app_title"
+                android:text="@string/app_name"
                 android:textColor="@color/white"
                 android:textSize="30sp"
-                ads:layout_constraintEnd_toStartOf="@+id/imgInfo"
+                ads:layout_constraintEnd_toStartOf="@+id/imgShare"
                 ads:layout_constraintStart_toEndOf="@+id/imgSettings"
                 ads:layout_constraintTop_toTopOf="parent" />
 
             <ImageButton
-                android:id="@+id/imgInfo"
+                android:id="@+id/imgShare"
                 android:layout_width="36dp"
                 android:layout_height="36dp"
                 android:layout_marginEnd="20dp"
                 ads:layout_constraintBottom_toBottomOf="parent"
                 ads:layout_constraintEnd_toEndOf="parent"
                 ads:layout_constraintTop_toTopOf="parent"
-                android:background="@drawable/info" />
+                android:background="@drawable/share" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -1,6 +1,7 @@
 package com.kyapps.guzelsozler.view
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -69,9 +70,18 @@ class QuotesFragment : Fragment() {
 
         observeLiveData()
 
-        //img favs button clicked
-        view.findViewById<ImageButton>(R.id.imgInfo).setOnClickListener{
-            Toast.makeText(context,"Info button clicked!", Toast.LENGTH_SHORT).show()
+        //image menu button clicked
+        view.findViewById<ImageButton>(R.id.imgSettings).setOnClickListener{
+            Toast.makeText(context,getText(R.string.settings),Toast.LENGTH_SHORT).show()
+        }
+
+        //img share button clicked
+        view.findViewById<ImageButton>(R.id.imgShare).setOnClickListener{
+            val intent= Intent()
+            intent.action= Intent.ACTION_SEND
+            intent.putExtra(Intent.EXTRA_TEXT,"En Güzel $sentCategoryName Sözleri için sen de indir! https://play.google.com/store/apps/details?id=com.kyapps.guzelsozler:")
+            intent.type="text/plain"
+            startActivity(Intent.createChooser(intent,"Paylaş:"))
         }
 
 
