@@ -1,4 +1,7 @@
 # guzelsozler
+![ss](https://imgyukle.com/f/2023/02/27/QTqdpe.png)
+
+
 
  ## Tech stack & Open-source libraries
 - **Kotlin** based
