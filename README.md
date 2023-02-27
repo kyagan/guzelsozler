@@ -14,6 +14,6 @@ Tech stack & Open-source libraries
 - Retrofit2 & OkHttp3: Construct the REST APIs and paging network data.
 
 Admin Panel CRUD
-- HTML%
+- HTML5
 - CSS3
 - PHP
